@@ -49,7 +49,6 @@ class BlogRepository implements BlogRepositoryInterface
         $blog = Blog::where('id',$blogId)->first();
         $blog->title = $data->title;
         $blog->content = $data->content;
-        $blog->published = $data->published;
         $blog->save();
         return $blog;
     }

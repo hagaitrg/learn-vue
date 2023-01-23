@@ -134,8 +134,8 @@ class BlogController extends Controller
         }
 
         try {
-            $data = $this->blog->deleteBlog($request->id);
-            return $this->response->sendSuccess(200, "Successfully deleted blog",$data);
+            $this->blog->deleteBlog($request->id);
+            return $this->response->sendSuccess(200, "Successfully deleted blog",null);
         } catch (\Throwable $th) {
             return $this->response->sendError(500, "Failed create blog", $th->getMessage());
         }
