@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->group(function(){
+    Route::prefix('blogs')->group(function(){
+        Route::get('/', [BlogController::class, 'index']);
+        Route::get('detail', [BlogController::class, 'show']);
+        Route::post('/', [BlogController::class, 'store']);
+        Route::post('/published', [BlogController::class, 'publish']);
+        Route::patch('/update', [BlogController::class, 'update']);
+        Route::delete('/delete', [BlogController::class, 'destroy']);
+    });
 });
