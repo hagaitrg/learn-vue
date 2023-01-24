@@ -25,8 +25,8 @@
                                     <td>{{ blog.content }}</td>
                                     <td>{{ blog.published }}</td>
                                     <td class="text-center">
-                                        <router-link :to="{name: 'blog.edit', params:{id: blog.id }}" class="btn btn-sm btn-warning mr-1">EDIT</router-link>
-                                        <button class="btn btn-sm btn-danger ml-1">DELETE</button>
+                                        <router-link :to="{name: 'blog.edit', params:{id: blog.id }}" class="btn btn-sm btn-warning mr-3">EDIT</router-link>
+                                        <button class="btn btn-sm btn-danger">DELETE</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -47,7 +47,7 @@ export default{
         let blogs = ref([])
 
         onMounted(()=>{
-            axios.get(process.env.API_URI+"/v1/blogs/")
+            axios.get("http://localhost:8000/api/v1/blogs/")
             .then(res=>{
                 blogs.value = res.data.data
             }).catch(err => {
