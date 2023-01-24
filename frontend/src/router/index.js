@@ -4,17 +4,17 @@ const routes = [
     {
         path: '/',
         name: 'blog.index',
-        component: ()=> import(/* webpackChunkName: "blog.index" */ '@/views/blog/Index.vue')
+        component: ()=> import(/* webpackChunkName: "blog.index" */ '@/views/blog/IndexBlog.vue')
     },
     {
         path: '/create',
         name: 'blog.create',
-        component: ()=> import(/* webpackChunkName: "blog.create" */ '@/views/blog/Create.vue')
+        component: ()=> import(/* webpackChunkName: "blog.create" */ '@/views/blog/CreateBlog.vue')
     },
     {
         path: '/edit/:id',
         name: 'blog.edit',
-        component: ()=> import(/* webpackChunkName: "blog.edit" */ '@/views/blog/Edit.vue')
+        component: ()=> import(/* webpackChunkName: "blog.edit" */ '@/views/blog/EditBlog.vue')
     },
 ];
 
