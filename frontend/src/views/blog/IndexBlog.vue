@@ -23,10 +23,14 @@
                                     <td>{{ index+1 }}</td>
                                     <td>{{ blog.title }}</td>
                                     <td>{{ blog.content }}</td>
-                                    <td>{{ blog.published }}</td>
+                                    <td >
+                                        <span v-if="(blog.published == 1)" class="badge text-bg-success">True</span>
+                                        <span v-else class="badge text-bg-danger">False</span>
+                                    </td>
                                     <td class="text-center">
-                                        <router-link :to="{name: 'blog.edit', params:{id: blog.id }}" class="btn btn-sm btn-warning mr-3">EDIT</router-link>
-                                        <button class="btn btn-sm btn-danger">DELETE</button>
+                                        <router-link :to="{name: 'blog.edit', params:{id: blog.id }}" class="btn btn-sm btn-warning">Edit</router-link> |
+                                        <button class="btn btn-sm btn-info">Published</button> |
+                                        <button class="btn btn-sm btn-danger">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>

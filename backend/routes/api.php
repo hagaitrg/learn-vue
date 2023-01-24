@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function(){
     Route::prefix('blogs')->group(function(){
         Route::get('/', [BlogController::class, 'index']);
-        Route::get('detail', [BlogController::class, 'show']);
+        Route::get('/detail', [BlogController::class, 'show']);
         Route::post('/', [BlogController::class, 'store']);
         Route::post('/published', [BlogController::class, 'publish']);
         Route::patch('/update', [BlogController::class, 'update']);
