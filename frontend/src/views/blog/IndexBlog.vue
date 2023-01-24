@@ -29,8 +29,8 @@
                                     </td>
                                     <td class="text-center">
                                         <router-link :to="{name: 'blog.edit', params:{id: blog.id }}" class="btn btn-sm btn-warning">Edit</router-link> |
-                                        <button class="btn btn-sm btn-info">Published</button> |
-                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                        <button @click.prevent="publishBlog(blog.id)" class="btn btn-sm btn-info">Published</button> |
+                                        <button @click.prevent="deleteBlog(blog.id)" class="btn btn-sm btn-danger">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -55,12 +55,32 @@ export default{
             .then(res=>{
                 blogs.value = res.data.data
             }).catch(err => {
-                console.log(err.response.message);
+                console.log(err.response.data);
             })
         })
 
+        function deleteBlog(id) {
+            axios.delete('http://localhost:8000/api/v1/blogs/delete?id='+id)
+            .then(()=>{
+                blogs.value.splice(blogs.value.indexOf(id),1);
+            }).catch(err=>{
+                console.log(err.response.data);
+            })
+        }
+
+        function publishBlog(id) {
+            axios.post('http://localhost:8000/api/v1/blogs/published?id='+id)
+            .then(()=>{
+                window.location.reload();
+            }).catch(err=>{
+                console.log(err.response.data);
+            })
+        }
+
         return {
-            blogs
+            blogs,
+            deleteBlog,
+            publishBlog
         }
     }
 }
